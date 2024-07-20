@@ -13,7 +13,7 @@ class _gridPageState extends State<gridPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Grid ",
+          "Grid View ",
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,

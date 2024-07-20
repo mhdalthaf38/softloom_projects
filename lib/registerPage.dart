@@ -153,7 +153,7 @@ class _RegisterpageState extends State<Registerpage> {
                                 eye ? Icons.visibility : Icons.visibility_off),
                           ),
                           label: Text(
-                            "Re enter Password",
+                            "Re Enter Password",
                             style: TextStyle(
                                 color: Color.fromARGB(255, 61, 110, 62)),
                           ),
