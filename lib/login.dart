@@ -9,6 +9,9 @@ class loginpage extends StatefulWidget {
 }
 
 class loginpage_state extends State {
+  bool namevalidate = false;
+  bool passvalidate = false;
+  String eroormessage = "";
   var usernamae = "lucenstar";
   var password = "done123";
   var _userController = TextEditingController();
@@ -56,9 +59,11 @@ class loginpage_state extends State {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(left: 40, right: 40, top: 30),
-                      child: TextField(
+                      child: TextFormField(
+                        keyboardType: TextInputType.emailAddress,
                         controller: _userController,
                         decoration: InputDecoration(
+                          errorText: namevalidate ? eroormessage : null,
                           label: Text(
                             "Username Or Email",
                             style: TextStyle(
@@ -85,9 +90,13 @@ class loginpage_state extends State {
                     Padding(
                       padding: EdgeInsets.only(left: 40, right: 40),
                       child: TextField(
+                        maxLength: 8,
                         obscureText: eye,
                         controller: passController,
                         decoration: InputDecoration(
+                          errorText: passvalidate
+                              ? "enter password , minimum 8 character"
+                              : null,
                           suffixIcon: IconButton(
                             icon: Icon(
                               eye ? Icons.visibility : Icons.visibility_off,
@@ -140,8 +149,23 @@ class loginpage_state extends State {
                           ),
                         ),
                         onPressed: () {
-                          if (_userController.text == full_name &&
-                              passController.text == pass) {
+                          setState(() {
+                            if (_userController.text.isEmpty) {
+                              eroormessage = "enter email";
+                              namevalidate = true;
+                            } else if (!_userController.text.contains("@")) {
+                              eroormessage = "Enter a valid email";
+                              namevalidate = true;
+                            } else {
+                              namevalidate = false;
+                            }
+                            passController.text.isEmpty ||
+                                    passController.text.length != 8
+                                ? passvalidate = true
+                                : passvalidate = false;
+                          });
+                          if (_userController.text == usernamae &&
+                              passController.text == password) {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(

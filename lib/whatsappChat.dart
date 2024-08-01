@@ -61,97 +61,97 @@ class _ChatScreenState extends State<ChatScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 "Select contact",
                 style: TextStyle(fontSize: 20),
               ),
               Text(
                 '${ContactNumber.length} contacts',
-                style: TextStyle(fontSize: 13),
+                style: const TextStyle(fontSize: 13),
               )
             ],
           ),
         ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: Icon(Icons.search),
             ),
           ),
-          Icon(Icons.more_vert)
+          const Icon(Icons.more_vert)
         ],
       ),
       body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ListTile(
-                  title: Text("New Group"),
-                  leading: CircleAvatar(
-                    radius: 23,
-                    backgroundColor: Color.fromARGB(255, 52, 128, 51),
-                    child: Icon(Icons.group_add, color: Colors.white),
+        child: Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: ListTile(
+                title: Text("New Group"),
+                leading: CircleAvatar(
+                  radius: 23,
+                  backgroundColor: Color.fromARGB(255, 52, 128, 51),
+                  child: Icon(Icons.group_add, color: Colors.white),
+                ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: ListTile(
+                title: Text("New contact"),
+                leading: CircleAvatar(
+                  radius: 23,
+                  backgroundColor: Color.fromARGB(255, 52, 128, 51),
+                  child: Icon(
+                    Icons.person_add,
+                    color: Colors.white,
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ListTile(
-                  title: Text("New contact"),
-                  leading: CircleAvatar(
-                    radius: 23,
-                    backgroundColor: Color.fromARGB(255, 52, 128, 51),
-                    child: Icon(
-                      Icons.person_add,
-                      color: Colors.white,
-                    ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: ListTile(
+                title: Text("New contact"),
+                leading: CircleAvatar(
+                  radius: 23,
+                  backgroundColor: Color.fromARGB(255, 52, 128, 51),
+                  child: Icon(
+                    Icons.groups,
+                    color: Colors.white,
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ListTile(
-                  title: Text("New contact"),
-                  leading: CircleAvatar(
-                    radius: 23,
-                    backgroundColor: Color.fromARGB(255, 52, 128, 51),
-                    child: Icon(
-                      Icons.groups,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text('Contacts on WhatsApp'),
-              ),
-              Container(
-                child: ListView.builder(
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    itemCount: ContactNumber.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ListTile(
-                          title: Text("${ContactName[index]}"),
-                          subtitle: Text("${ContactNumber[index]}"),
-                          leading: CircleAvatar(
-                            radius: 23,
-                            backgroundImage:
-                                AssetImage('assets/images/${image[index]}'),
-                          ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text('Contacts on WhatsApp'),
+            ),
+            SizedBox(
+              height: 600,
+              child: ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  itemCount: ContactNumber.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ListTile(
+                        title: Text("${ContactName[index]}"),
+                        subtitle: Text("${ContactNumber[index]}"),
+                        leading: CircleAvatar(
+                          radius: 23,
+                          backgroundImage:
+                              AssetImage('assets/images/${image[index]}'),
                         ),
-                      );
-                    }),
-              ),
-            ],
-          ),
+                      ),
+                    );
+                  }),
+            ),
+          ],
         ),
       ),
     );

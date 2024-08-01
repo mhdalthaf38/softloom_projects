@@ -1,9 +1,14 @@
 import 'package:dummy_app/profilepage.dart';
 import 'package:flutter/material.dart';
 
-class Homepage extends StatelessWidget {
+class Homepage extends StatefulWidget {
   const Homepage({super.key});
 
+  @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     double Screenheight = MediaQuery.of(context).size.height;
@@ -24,7 +29,12 @@ class Homepage extends StatelessWidget {
                     fontSize: 24,
                     fontFamily: 'Playwrite'),
               ),
-              Icon(Icons.keyboard_arrow_down_rounded)
+              PopupMenuButton(
+                  icon: Icon(Icons.keyboard_arrow_down_rounded),
+                  itemBuilder: (context) => [
+                        PopupMenuItem(child: Text("following")),
+                        PopupMenuItem(child: Text("followers"))
+                      ])
             ],
           ),
         ),
