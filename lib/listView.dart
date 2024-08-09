@@ -1,4 +1,4 @@
-import 'package:dummy_app/whatsappChat.dart';
+import 'package:dummy_app/grid.dart';
 import 'package:flutter/material.dart';
 
 class ListviewPage extends StatefulWidget {
@@ -10,18 +10,18 @@ class ListviewPage extends StatefulWidget {
 
 class _ListviewPageState extends State<ListviewPage> {
   List<String> image = [
-    'love-birds_8.webp',
-    'download.jpeg',
-    'download (1).jpeg',
-    'download (1).jpeg',
-    'download.jpeg',
-    'download (1).jpeg',
-    'love-birds_8.webp',
-    'download.jpeg',
-    'download (1).jpeg',
-    'download (1).jpeg',
-    'download.jpeg',
-    'download (1).jpeg'
+    'photo.jpg',
+    'photo.jpg',
+    'photo.jpg',
+    'photo.jpg',
+    'photo.jpg',
+    'photo.jpg',
+    'photo.jpg',
+    'photo.jpg',
+    'photo.jpg',
+    'photo.jpg',
+    'photo.jpg',
+    'photo.jpg'
   ];
   List<String> email = [
     'mhdalhtafd232GMAIL.COM',
@@ -104,7 +104,7 @@ class _ListviewPageState extends State<ListviewPage> {
           child: IconButton(
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ChatScreen()));
+                    MaterialPageRoute(builder: (context) => gridPage()));
               },
               icon: Icon(
                 Icons.chat_bubble,

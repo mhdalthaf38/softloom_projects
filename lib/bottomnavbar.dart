@@ -1,8 +1,8 @@
 import 'package:dummy_app/grid.dart';
-import 'package:dummy_app/homepage.dart';
-import 'package:dummy_app/login.dart';
-import 'package:dummy_app/profilepage.dart';
-import 'package:dummy_app/whatsappChat.dart';
+import 'package:dummy_app/someskelton/homepage.dart';
+import 'package:dummy_app/someskelton/login.dart';
+import 'package:dummy_app/someskelton/profilepage.dart';
+
 import 'package:flutter/material.dart';
 
 class Bottomnavbar extends StatefulWidget {
@@ -13,7 +13,7 @@ class Bottomnavbar extends StatefulWidget {
 }
 
 class _BottomnavbarState extends State<Bottomnavbar> {
-  final pages = [Homepage(), Profilepage(), ChatScreen()];
+  final pages = [Homepage(), Profilepage(), gridPage()];
   int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class _BottomnavbarState extends State<Bottomnavbar> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       extendBody: true,
-      body: [Homepage(), Profilepage(), ChatScreen()][_currentIndex],
+      body: [Homepage(), Profilepage(), gridPage()][_currentIndex],
       bottomNavigationBar:
           //  BottomNavigationBar(
 

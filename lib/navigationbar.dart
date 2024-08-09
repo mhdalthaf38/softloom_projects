@@ -1,7 +1,7 @@
 import 'package:dummy_app/grid.dart';
-import 'package:dummy_app/login.dart';
-import 'package:dummy_app/registerPage.dart';
-import 'package:dummy_app/whatsappChat.dart';
+import 'package:dummy_app/someskelton/login.dart';
+import 'package:dummy_app/someskelton/registerPage.dart';
+
 import 'package:flutter/material.dart';
 
 class Navifationbar extends StatefulWidget {
@@ -20,7 +20,7 @@ class _NavifationbarState extends State<Navifationbar> {
         gridPage(),
         loginpage(),
         Registerpage(),
-        ChatScreen()
+        gridPage()
       ][_currentindex],
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (index) {

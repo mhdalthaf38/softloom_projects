@@ -1,6 +1,6 @@
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
-import 'package:dummy_app/homepage.dart';
-import 'package:dummy_app/login.dart';
+import 'package:dummy_app/someskelton/homepage.dart';
+import 'package:dummy_app/someskelton/login.dart';
 import 'package:dummy_app/stack.dart';
 import 'package:flutter/material.dart';
 

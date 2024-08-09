@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dummy_app/listView.dart';
-import 'package:dummy_app/profilepage.dart';
+import 'package:dummy_app/someskelton/profilepage.dart';
 import 'package:flutter/material.dart';
 
 class carouselPage extends StatefulWidget {

@@ -1,7 +1,8 @@
-import 'package:dummy_app/homepage.dart';
+import 'package:dummy_app/grid.dart';
+import 'package:dummy_app/someskelton/homepage.dart';
 import 'package:dummy_app/listView.dart';
-import 'package:dummy_app/profilepage.dart';
-import 'package:dummy_app/whatsappChat.dart';
+import 'package:dummy_app/someskelton/profilepage.dart';
+
 import 'package:flutter/material.dart';
 
 class InstaMainPage extends StatefulWidget {
@@ -12,7 +13,7 @@ class InstaMainPage extends StatefulWidget {
 }
 
 class _InstaMainPageState extends State<InstaMainPage> {
-  final pages = [Homepage(), ChatScreen(), ListviewPage(), Profilepage()];
+  final pages = [Homepage(), gridPage(), ListviewPage(), Profilepage()];
   int currentindex = 0;
   @override
   Widget build(BuildContext context) {

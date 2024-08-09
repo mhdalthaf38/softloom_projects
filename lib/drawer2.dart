@@ -23,11 +23,10 @@ class _Drawer2State extends State<Drawer2> {
                       image: DecorationImage(
                           fit: BoxFit.fill,
                           image: AssetImage(
-                            'assets/images/8324.png',
+                            'assets/images/photo.jpg',
                           ))),
                   currentAccountPicture: CircleAvatar(
-                    backgroundImage: AssetImage(
-                        'assets/images/WhatsApp Image 2024-07-23 at 11.58.47_a0f75447.jpg'),
+                    backgroundImage: AssetImage('assets/images/photo.jpg'),
                   ),
                   accountName: Text('akshay baiju'),
                   accountEmail: Text('akshay1232gmail.com'),

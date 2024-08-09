@@ -1,27 +1,30 @@
-import 'package:dummy_app/homepage.dart';
-import 'package:dummy_app/registerPage.dart';
+import 'package:dummy_app/someskelton/homepage.dart';
+import 'package:dummy_app/someskelton/login.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class loginpage extends StatefulWidget {
+var full_name;
+var email;
+var pass;
+
+class Registerpage extends StatefulWidget {
+  const Registerpage({super.key});
+
   @override
-  State<StatefulWidget> createState() => loginpage_state();
+  State<Registerpage> createState() => _RegisterpageState();
 }
 
-class loginpage_state extends State {
-  bool namevalidate = false;
-  bool passvalidate = false;
-  String eroormessage = "";
-  var usernamae = "lucenstar";
-  var password = "done123";
-  var _userController = TextEditingController();
-  var passController = TextEditingController();
+class _RegisterpageState extends State<Registerpage> {
+  var _nameController = TextEditingController();
+  var _emailController = TextEditingController();
+  var _passController = TextEditingController();
+  var _repassController = TextEditingController();
   late bool eye = true;
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-          body: Container(
+    return Scaffold(
+      body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/images/Untitled design1.png'),
@@ -32,7 +35,7 @@ class loginpage_state extends State {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Column(
+              const Column(
                 children: [
                   Padding(
                     padding: EdgeInsets.only(top: 35, bottom: 10),
@@ -46,11 +49,9 @@ class loginpage_state extends State {
                   ),
                   Padding(
                     padding: EdgeInsets.only(bottom: 100),
-                    child: Text(
-                      "Welcome to Lovebirds",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
-                    ),
+                    child: Text("Be a Lovebirds",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w300)),
                   ),
                 ],
               ),
@@ -58,28 +59,45 @@ class loginpage_state extends State {
                 child: Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 40, right: 40, top: 30),
-                      child: TextFormField(
-                        keyboardType: TextInputType.emailAddress,
-                        controller: _userController,
+                      padding: EdgeInsets.only(left: 40, right: 40, top: 50),
+                      child: TextField(
+                        controller: _nameController,
                         decoration: InputDecoration(
-                          errorText: namevalidate ? eroormessage : null,
                           label: Text(
-                            "Username Or Email",
+                            "Full Name",
                             style: TextStyle(
-                              color: Color.fromARGB(255, 61, 110, 62),
-                            ),
+                                color: Color.fromARGB(255, 61, 110, 62)),
                           ),
                           labelStyle: TextStyle(fontWeight: FontWeight.w300),
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color.fromARGB(199, 247, 167, 142),
-                            ),
+                                color: Color.fromARGB(199, 247, 167, 142)),
                           ),
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color.fromARGB(199, 247, 167, 142),
-                            ),
+                                color: Color.fromARGB(199, 247, 167, 142)),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 40, right: 40),
+                      child: TextField(
+                        controller: _emailController,
+                        decoration: InputDecoration(
+                          label: Text(
+                            "Email Or Phone Number",
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 61, 110, 62)),
+                          ),
+                          labelStyle: TextStyle(fontWeight: FontWeight.w300),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Color.fromARGB(199, 247, 167, 142)),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Color.fromARGB(199, 247, 167, 142)),
                           ),
                         ),
                       ),
@@ -90,51 +108,65 @@ class loginpage_state extends State {
                     Padding(
                       padding: EdgeInsets.only(left: 40, right: 40),
                       child: TextField(
-                        maxLength: 8,
                         obscureText: eye,
-                        controller: passController,
+                        controller: _passController,
                         decoration: InputDecoration(
-                          errorText: passvalidate
-                              ? "enter password , minimum 8 character"
-                              : null,
                           suffixIcon: IconButton(
-                            icon: Icon(
-                              eye ? Icons.visibility : Icons.visibility_off,
-                            ),
                             onPressed: () {
                               setState(() {
                                 eye = !eye;
                               });
                             },
+                            icon: Icon(
+                                eye ? Icons.visibility : Icons.visibility_off),
                           ),
                           label: Text(
                             "Password",
                             style: TextStyle(
-                              color: Color.fromARGB(255, 61, 110, 62),
-                            ),
+                                color: Color.fromARGB(255, 61, 110, 62)),
                           ),
                           labelStyle: TextStyle(fontWeight: FontWeight.w300),
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color.fromARGB(199, 247, 167, 142),
-                            ),
+                                color: Color.fromARGB(199, 247, 167, 142)),
                           ),
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color.fromARGB(199, 247, 167, 142),
-                            ),
+                                color: Color.fromARGB(199, 247, 167, 142)),
                           ),
                         ),
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 195, top: 15),
-                      child: Text(
-                        "Forget password?",
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 61, 110, 62),
-                            fontSize: 15,
-                            fontWeight: FontWeight.w400),
+                    Padding(
+                      padding: EdgeInsets.only(left: 40, right: 40),
+                      child: TextField(
+                        obscureText: eye,
+                        controller: _repassController,
+                        decoration: InputDecoration(
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                eye = !eye;
+                              });
+                            },
+                            icon: Icon(
+                                eye ? Icons.visibility : Icons.visibility_off),
+                          ),
+                          label: Text(
+                            "Re Enter Password",
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 61, 110, 62)),
+                          ),
+                          labelStyle: TextStyle(fontWeight: FontWeight.w300),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Color.fromARGB(199, 247, 167, 142)),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Color.fromARGB(199, 247, 167, 142)),
+                          ),
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -144,39 +176,28 @@ class loginpage_state extends State {
                       width: 150,
                       child: ElevatedButton(
                         style: const ButtonStyle(
-                          backgroundColor: WidgetStatePropertyAll(
-                            Color.fromARGB(199, 247, 167, 142),
-                          ),
-                        ),
+                            backgroundColor: WidgetStatePropertyAll(
+                                Color.fromARGB(199, 247, 167, 142))),
                         onPressed: () {
-                          setState(() {
-                            if (_userController.text.isEmpty) {
-                              eroormessage = "enter email";
-                              namevalidate = true;
-                            } else if (!_userController.text.contains("@")) {
-                              eroormessage = "Enter a valid email";
-                              namevalidate = true;
-                            } else {
-                              namevalidate = false;
-                            }
-                            passController.text.isEmpty ||
-                                    passController.text.length != 8
-                                ? passvalidate = true
-                                : passvalidate = false;
-                          });
-                          if (_userController.text == usernamae &&
-                              passController.text == password) {
+                          if (_passController.text == _repassController.text) {
+                            full_name = _nameController.text;
+                            email = _emailController.text;
+
+                            pass = _passController.text;
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Homepage(),
-                                ));
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => loginpage(),
+                              ),
+                            );
+                            print(email);
                           } else {
-                            Fluttertoast.showToast(msg: "invalid message");
+                            Fluttertoast.showToast(
+                                msg: "Enter the password correctly");
                           }
                         },
                         child: const Text(
-                          "Sign in",
+                          "Sign up",
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
@@ -187,10 +208,9 @@ class loginpage_state extends State {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Expanded(
-                            child: Divider(
-                              indent: 90,
-                            ),
-                          ),
+                              child: Divider(
+                            indent: 90,
+                          )),
                           Text(
                             "Or",
                             style: TextStyle(fontSize: 13),
@@ -212,15 +232,15 @@ class loginpage_state extends State {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("New Lovebirds?",
+                      const Text("Are you a Lovebirds?",
                           style: TextStyle(fontSize: 13)),
                       GestureDetector(
                         onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const Registerpage())),
+                                builder: (context) => loginpage())),
                         child: const Text(
-                          "Create Account",
+                          "Then Sign in",
                           style: TextStyle(
                               color: Color.fromARGB(255, 61, 110, 62),
                               fontSize: 15),
@@ -233,7 +253,7 @@ class loginpage_state extends State {
             ],
           ),
         ),
-      )),
+      ),
     );
   }
 }
