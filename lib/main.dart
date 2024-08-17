@@ -1,5 +1,12 @@
+import 'package:dummy_app/animation/SlideList.dart';
+
+import 'package:dummy_app/animation/loginpage.dart';
+import 'package:dummy_app/animation/pallet.dart';
+
+import 'package:dummy_app/animation/sampleContainerAni.dart';
 import 'package:dummy_app/bottomnavbar.dart';
 import 'package:dummy_app/carousel.dart';
+import 'package:dummy_app/animation/cartbutton.dart';
 import 'package:dummy_app/datepicker.dart';
 import 'package:dummy_app/drawe.dart';
 import 'package:dummy_app/drawer2.dart';
@@ -36,7 +43,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Dropdownmenu(),
+      home: Slidelist(),
     );
   }
 }
