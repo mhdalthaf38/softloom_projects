@@ -1,9 +1,12 @@
 import 'package:dummy_app/animation/SlideList.dart';
+import 'package:dummy_app/animation/animationOpacity.dart';
 
 import 'package:dummy_app/animation/loginpage.dart';
 import 'package:dummy_app/animation/pallet.dart';
+import 'package:dummy_app/animation/positionAnimation.dart';
 
 import 'package:dummy_app/animation/sampleContainerAni.dart';
+import 'package:dummy_app/animation/tweenAndController.dart';
 import 'package:dummy_app/bottomnavbar.dart';
 import 'package:dummy_app/carousel.dart';
 import 'package:dummy_app/animation/cartbutton.dart';
@@ -42,8 +45,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Slidelist(),
-    );
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          body: TweenandcontrollerAnimation(),
+        ));
   }
 }
