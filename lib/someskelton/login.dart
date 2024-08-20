@@ -1,30 +1,27 @@
-import 'package:dummy_app/homepage.dart';
-import 'package:dummy_app/login.dart';
+import 'package:dummy_app/someskelton/homepage.dart';
+import 'package:dummy_app/someskelton/registerPage.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-var full_name;
-var email;
-var pass;
-
-class Registerpage extends StatefulWidget {
-  const Registerpage({super.key});
-
+class loginpage extends StatefulWidget {
   @override
-  State<Registerpage> createState() => _RegisterpageState();
+  State<StatefulWidget> createState() => loginpage_state();
 }
 
-class _RegisterpageState extends State<Registerpage> {
-  var _nameController = TextEditingController();
-  var _emailController = TextEditingController();
-  var _passController = TextEditingController();
-  var _repassController = TextEditingController();
+class loginpage_state extends State {
+  bool namevalidate = false;
+  bool passvalidate = false;
+  String eroormessage = "";
+  var usernamae = "lucenstar";
+  var password = "done123";
+  var _userController = TextEditingController();
+  var passController = TextEditingController();
   late bool eye = true;
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
+    return SafeArea(
+      child: Scaffold(
+          body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/images/Untitled design1.png'),
@@ -35,7 +32,7 @@ class _RegisterpageState extends State<Registerpage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const Column(
+              Column(
                 children: [
                   Padding(
                     padding: EdgeInsets.only(top: 35, bottom: 10),
@@ -49,9 +46,11 @@ class _RegisterpageState extends State<Registerpage> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(bottom: 100),
-                    child: Text("Be a Lovebirds",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w300)),
+                    child: Text(
+                      "Welcome to Lovebirds",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                    ),
                   ),
                 ],
               ),
@@ -59,45 +58,28 @@ class _RegisterpageState extends State<Registerpage> {
                 child: Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 40, right: 40, top: 50),
-                      child: TextField(
-                        controller: _nameController,
+                      padding: EdgeInsets.only(left: 40, right: 40, top: 30),
+                      child: TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        controller: _userController,
                         decoration: InputDecoration(
+                          errorText: namevalidate ? eroormessage : null,
                           label: Text(
-                            "Full Name",
+                            "Username Or Email",
                             style: TextStyle(
-                                color: Color.fromARGB(255, 61, 110, 62)),
+                              color: Color.fromARGB(255, 61, 110, 62),
+                            ),
                           ),
                           labelStyle: TextStyle(fontWeight: FontWeight.w300),
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                                color: Color.fromARGB(199, 247, 167, 142)),
+                              color: Color.fromARGB(199, 247, 167, 142),
+                            ),
                           ),
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                                color: Color.fromARGB(199, 247, 167, 142)),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 40, right: 40),
-                      child: TextField(
-                        controller: _emailController,
-                        decoration: InputDecoration(
-                          label: Text(
-                            "Email Or Phone Number",
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 61, 110, 62)),
-                          ),
-                          labelStyle: TextStyle(fontWeight: FontWeight.w300),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Color.fromARGB(199, 247, 167, 142)),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Color.fromARGB(199, 247, 167, 142)),
+                              color: Color.fromARGB(199, 247, 167, 142),
+                            ),
                           ),
                         ),
                       ),
@@ -108,65 +90,51 @@ class _RegisterpageState extends State<Registerpage> {
                     Padding(
                       padding: EdgeInsets.only(left: 40, right: 40),
                       child: TextField(
+                        maxLength: 8,
                         obscureText: eye,
-                        controller: _passController,
+                        controller: passController,
                         decoration: InputDecoration(
+                          errorText: passvalidate
+                              ? "enter password , minimum 8 character"
+                              : null,
                           suffixIcon: IconButton(
+                            icon: Icon(
+                              eye ? Icons.visibility : Icons.visibility_off,
+                            ),
                             onPressed: () {
                               setState(() {
                                 eye = !eye;
                               });
                             },
-                            icon: Icon(
-                                eye ? Icons.visibility : Icons.visibility_off),
                           ),
                           label: Text(
                             "Password",
                             style: TextStyle(
-                                color: Color.fromARGB(255, 61, 110, 62)),
+                              color: Color.fromARGB(255, 61, 110, 62),
+                            ),
                           ),
                           labelStyle: TextStyle(fontWeight: FontWeight.w300),
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                                color: Color.fromARGB(199, 247, 167, 142)),
+                              color: Color.fromARGB(199, 247, 167, 142),
+                            ),
                           ),
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                                color: Color.fromARGB(199, 247, 167, 142)),
+                              color: Color.fromARGB(199, 247, 167, 142),
+                            ),
                           ),
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 40, right: 40),
-                      child: TextField(
-                        obscureText: eye,
-                        controller: _repassController,
-                        decoration: InputDecoration(
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                eye = !eye;
-                              });
-                            },
-                            icon: Icon(
-                                eye ? Icons.visibility : Icons.visibility_off),
-                          ),
-                          label: Text(
-                            "Re Enter Password",
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 61, 110, 62)),
-                          ),
-                          labelStyle: TextStyle(fontWeight: FontWeight.w300),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Color.fromARGB(199, 247, 167, 142)),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Color.fromARGB(199, 247, 167, 142)),
-                          ),
-                        ),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 195, top: 15),
+                      child: Text(
+                        "Forget password?",
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 61, 110, 62),
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400),
                       ),
                     ),
                     const SizedBox(
@@ -176,28 +144,39 @@ class _RegisterpageState extends State<Registerpage> {
                       width: 150,
                       child: ElevatedButton(
                         style: const ButtonStyle(
-                            backgroundColor: WidgetStatePropertyAll(
-                                Color.fromARGB(199, 247, 167, 142))),
+                          backgroundColor: WidgetStatePropertyAll(
+                            Color.fromARGB(199, 247, 167, 142),
+                          ),
+                        ),
                         onPressed: () {
-                          if (_passController.text == _repassController.text) {
-                            full_name = _nameController.text;
-                            email = _emailController.text;
-
-                            pass = _passController.text;
+                          setState(() {
+                            if (_userController.text.isEmpty) {
+                              eroormessage = "enter email";
+                              namevalidate = true;
+                            } else if (!_userController.text.contains("@")) {
+                              eroormessage = "Enter a valid email";
+                              namevalidate = true;
+                            } else {
+                              namevalidate = false;
+                            }
+                            passController.text.isEmpty ||
+                                    passController.text.length != 8
+                                ? passvalidate = true
+                                : passvalidate = false;
+                          });
+                          if (_userController.text == usernamae &&
+                              passController.text == password) {
                             Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => loginpage(),
-                              ),
-                            );
-                            print(email);
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Homepage(),
+                                ));
                           } else {
-                            Fluttertoast.showToast(
-                                msg: "Enter the password correctly");
+                            Fluttertoast.showToast(msg: "invalid message");
                           }
                         },
                         child: const Text(
-                          "Sign up",
+                          "Sign in",
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
@@ -208,9 +187,10 @@ class _RegisterpageState extends State<Registerpage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Expanded(
-                              child: Divider(
-                            indent: 90,
-                          )),
+                            child: Divider(
+                              indent: 90,
+                            ),
+                          ),
                           Text(
                             "Or",
                             style: TextStyle(fontSize: 13),
@@ -232,15 +212,15 @@ class _RegisterpageState extends State<Registerpage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("Are you a Lovebirds?",
+                      const Text("New Lovebirds?",
                           style: TextStyle(fontSize: 13)),
                       GestureDetector(
                         onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => loginpage())),
+                                builder: (context) => const Registerpage())),
                         child: const Text(
-                          "Then Sign in",
+                          "Create Account",
                           style: TextStyle(
                               color: Color.fromARGB(255, 61, 110, 62),
                               fontSize: 15),
@@ -253,7 +233,7 @@ class _RegisterpageState extends State<Registerpage> {
             ],
           ),
         ),
-      ),
+      )),
     );
   }
 }
