@@ -33,12 +33,13 @@ class _AnimationBuilderState extends State<AnimationBuilder>
       body: Center(
         child: AnimatedBuilder(
           animation: _controller,
-          builder: (context, index) {
+          builder: (context, child) {
             return Transform.scale(
               scale: _controller.value + 1,
-              child: Text('fdf'),
+              child: child,
             );
           },
+          child: FlutterLogo(size: 100),
         ),
       ),
     );
