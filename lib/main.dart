@@ -20,7 +20,7 @@ import 'package:dummy_app/someskelton/homepage.dart';
 import 'package:dummy_app/someskelton/instagram.dart';
 import 'package:dummy_app/listView.dart';
 import 'package:dummy_app/someskelton/login.dart';
-import 'package:dummy_app/animation.dart';
+import 'package:dummy_app/animation/animation.dart';
 import 'package:dummy_app/multifilePicker.dart';
 import 'package:dummy_app/navigationbar.dart';
 import 'package:dummy_app/popupmenubutton.dart';
@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(),
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          body: TweenandcontrollerAnimation(),
+          body: PositionAnimation(),
         ));
   }
 }
