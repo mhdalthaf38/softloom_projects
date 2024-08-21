@@ -1,5 +1,6 @@
 import 'package:dummy_app/animation/SlideList.dart';
 import 'package:dummy_app/animation/animationOpacity.dart';
+import 'package:dummy_app/animation/fadingTransitionAnimation.dart';
 
 import 'package:dummy_app/animation/loginpage.dart';
 import 'package:dummy_app/animation/pallet.dart';
@@ -48,7 +49,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(),
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          body: PositionAnimation(),
+          body: Fadingtransitionanimation(),
         ));
   }
 }

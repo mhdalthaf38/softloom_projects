@@ -66,7 +66,7 @@ class _PositionAnimationState extends State<PositionAnimation>
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20), color: Colors.red),
                 transform: Matrix4.identity()..rotateZ(taped ? 5 : 1),
-                duration: Duration(milliseconds: 1000),
+                duration: Duration(milliseconds: 500),
                 width: 90,
                 height: 20,
               ),
