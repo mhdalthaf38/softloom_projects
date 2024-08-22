@@ -9,6 +9,7 @@ import 'package:dummy_app/animation/positionAnimation.dart';
 
 import 'package:dummy_app/animation/sampleContainerAni.dart';
 import 'package:dummy_app/animation/tweenAndController.dart';
+import 'package:dummy_app/animation/tweencolor.dart';
 import 'package:dummy_app/bottomnavbar.dart';
 import 'package:dummy_app/carousel.dart';
 import 'package:dummy_app/animation/cartbutton.dart';
@@ -50,7 +51,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(),
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          body: AnimationBuilder(),
+          body: TweenColor(),
         ));
   }
 }
