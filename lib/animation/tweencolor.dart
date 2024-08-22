@@ -10,13 +10,19 @@ class TweenColor extends StatefulWidget {
 class _TweenColorState extends State<TweenColor>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
+  late Animation<Color?> colorAnimation;
 
   @override
   void initState() {
     super.initState();
     _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 1))
-          ..forward();
+        AnimationController(vsync: this, duration: Duration(seconds: 2));
+    colorAnimation = ColorTween(begin: Colors.amber, end: Colors.green)
+        .animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn))
+      ..addListener(() {
+        setState(() {});
+      });
+    _controller.forward();
   }
 
   @override
@@ -29,10 +35,11 @@ class _TweenColorState extends State<TweenColor>
   Widget build(BuildContext context) {
     return FadeTransition(
       opacity: _controller,
-      child: Container(
+      child: AnimatedContainer(
+        duration: Duration(seconds: 2),
         width: 100,
         height: 100,
-        color: Colors.amber,
+        color: colorAnimation.value,
       ),
     );
   }
