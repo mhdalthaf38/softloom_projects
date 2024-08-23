@@ -52,7 +52,7 @@ class _PositionAnimationState extends State<PositionAnimation>
               color: const Color.fromARGB(255, 148, 185, 215),
               child: Center(
                   child: Text(
-                "Kadayadi Mone",
+                "you fool",
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,

@@ -26,12 +26,6 @@ class _TweenColorState extends State<TweenColor>
   }
 
   @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return FadeTransition(
       opacity: _controller,
