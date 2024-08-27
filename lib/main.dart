@@ -1,6 +1,7 @@
 import 'package:dummy_app/animation/AnimationBuilder.dart';
 import 'package:dummy_app/animation/SlideList.dart';
 import 'package:dummy_app/animation/animationOpacity.dart';
+import 'package:dummy_app/animation/explicit/pageTransition.dart';
 import 'package:dummy_app/animation/fadingTransitionAnimation.dart';
 
 import 'package:dummy_app/animation/loginpage.dart';
@@ -51,7 +52,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(),
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          body: TweenColor(),
+          body: PageTransition(),
         ));
   }
 }
