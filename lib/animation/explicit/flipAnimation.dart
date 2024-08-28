@@ -23,8 +23,18 @@ class _FlipanimationState extends State<Flipanimation>
     _animation = Tween<double>(begin: 0.0, end: 1.0)
         .animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
     _controller.addListener(() {
-      setState(() {});
+      setState(() {
+        rotate = !rotate;
+      });
     });
+    _controller.addStatusListener((status) {
+      if (_controller.isCompleted) {
+        _controller.reverse();
+      } else if (_controller.isDismissed) {
+        _controller.forward();
+      }
+    });
+    _controller.forward();
   }
 
   @override
@@ -39,16 +49,7 @@ class _FlipanimationState extends State<Flipanimation>
     return Scaffold(
       body: Center(
         child: GestureDetector(
-          onTap: () {
-            if (_controller.isCompleted) {
-              _controller.reverse();
-            } else {
-              _controller.forward();
-            }
-            setState(() {
-              rotate = !rotate;
-            });
-          },
+          onTap: () {},
           child: Center(
             child: Stack(
               alignment: Alignment.center,
