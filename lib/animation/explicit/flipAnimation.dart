@@ -48,50 +48,47 @@ class _FlipanimationState extends State<Flipanimation>
     final rotateY = _animation.value * 3.141;
     return Scaffold(
       body: Center(
-        child: GestureDetector(
-          onTap: () {},
-          child: Center(
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Transform(
-                    transform: Matrix4.identity()
-                      ..setEntry(3, 2, .001)
-                      ..rotateY(rotateY),
-                    alignment: Alignment.center,
-                    child: _animation.value < .5
-                        ? Container(
-                            width: 200,
-                            height: 200,
-                            color: Color.fromARGB(255, 226, 186, 6),
-                            child: Center(
-                              child: Icon(
-                                Icons.dangerous,
-                                color: Colors.black,
-                              ),
+        child: Center(
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Transform(
+                  transform: Matrix4.identity()
+                    ..setEntry(3, 2, .001)
+                    ..rotateY(rotateY),
+                  alignment: Alignment.center,
+                  child: _animation.value < .5
+                      ? Container(
+                          width: 200,
+                          height: 200,
+                          color: Color.fromARGB(255, 226, 186, 6),
+                          child: Center(
+                            child: Icon(
+                              Icons.dangerous,
+                              color: Colors.black,
                             ),
-                          )
-                        : SizedBox.shrink()),
-                Transform(
-                    transform: Matrix4.identity()
-                      ..setEntry(3, 2, .001)
-                      ..rotateY(rotateY),
-                    alignment: Alignment.center,
-                    child: _animation.value >= .5
-                        ? Container(
-                            width: 200,
-                            height: 200,
-                            color: Color.fromARGB(255, 7, 152, 19),
-                            child: Center(
-                              child: Icon(
-                                Icons.person,
-                                color: Colors.black,
-                              ),
+                          ),
+                        )
+                      : SizedBox.shrink()),
+              Transform(
+                  transform: Matrix4.identity()
+                    ..setEntry(3, 2, .001)
+                    ..rotateY(rotateY),
+                  alignment: Alignment.center,
+                  child: _animation.value >= .5
+                      ? Container(
+                          width: 200,
+                          height: 200,
+                          color: Color.fromARGB(255, 7, 152, 19),
+                          child: Center(
+                            child: Icon(
+                              Icons.person,
+                              color: Colors.black,
                             ),
-                          )
-                        : SizedBox.shrink()),
-              ],
-            ),
+                          ),
+                        )
+                      : SizedBox.shrink()),
+            ],
           ),
         ),
       ),
