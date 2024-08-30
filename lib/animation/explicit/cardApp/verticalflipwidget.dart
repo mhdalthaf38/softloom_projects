@@ -48,19 +48,16 @@ class _VerticalFlipCardState extends State<VerticalFlipCard> {
   }
 
   Widget _buildFrontCard() {
-    return Hero(
-      tag: 'tahed',
-      child: Container(
-          width: 310,
-          height: 190,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 20)],
-          ),
-          child: Image.asset(
-              fit: BoxFit.cover,
-              'assets/images/yellow-black-front-removebg-preview.png')),
-    );
+    return Container(
+        width: 310,
+        height: 190,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 20)],
+        ),
+        child: Image.asset(
+            fit: BoxFit.cover,
+            'assets/images/yellow-black-front-removebg-preview.png'));
   }
 
   Widget _buildBackCard() {
