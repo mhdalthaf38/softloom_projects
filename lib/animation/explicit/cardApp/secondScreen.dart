@@ -3,7 +3,9 @@ import 'package:dummy_app/animation/explicit/cardApp/verticalflipwidget.dart';
 import 'package:flutter/material.dart';
 
 class SecondClass extends StatefulWidget {
-  const SecondClass({super.key});
+  String frontimage;
+  String backimage;
+  SecondClass({super.key, required this.frontimage, required this.backimage});
 
   @override
   State<SecondClass> createState() => _SecondClassState();
@@ -82,7 +84,11 @@ class _SecondClassState extends State<SecondClass>
                 padding: const EdgeInsets.only(
                   top: 100,
                 ),
-                child: Center(child: VerticalFlipCard()),
+                child: Center(
+                    child: VerticalFlipCard(
+                  frontimage: widget.frontimage,
+                  backimage: widget.backimage,
+                )),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 100),

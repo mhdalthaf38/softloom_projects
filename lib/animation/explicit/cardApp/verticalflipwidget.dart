@@ -3,6 +3,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class VerticalFlipCard extends StatefulWidget {
+  String frontimage;
+  String backimage;
+  VerticalFlipCard(
+      {super.key, required this.frontimage, required this.backimage});
   @override
   _VerticalFlipCardState createState() => _VerticalFlipCardState();
 }
@@ -55,9 +59,7 @@ class _VerticalFlipCardState extends State<VerticalFlipCard> {
           borderRadius: BorderRadius.circular(10),
           boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 20)],
         ),
-        child: Image.asset(
-            fit: BoxFit.cover,
-            'assets/images/yellow-black-front-removebg-preview.png'));
+        child: Image.asset(fit: BoxFit.cover, widget.frontimage));
   }
 
   Widget _buildBackCard() {
@@ -68,9 +70,7 @@ class _VerticalFlipCardState extends State<VerticalFlipCard> {
           borderRadius: BorderRadius.circular(10),
           boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 20)],
         ),
-        child: Image.asset(
-            fit: BoxFit.cover,
-            'assets/images/yellow-black-back-removebg-preview.png'));
+        child: Image.asset(fit: BoxFit.cover, widget.backimage));
   }
 }
 

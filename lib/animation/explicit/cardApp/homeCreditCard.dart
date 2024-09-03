@@ -21,6 +21,15 @@ class _CardHomePageState extends State<CardHomePage>
   List balance = [2323.23, 2344.23, 42433.38, 3466.52];
   List frontImages = [
     'assets/images/yellow-black-front-removebg-preview.png',
+    'assets/images/black-front-removebg-preview.png',
+    'assets/images/blue_front-removebg-preview.png',
+    'assets/images/white-front-removebg-preview.png'
+  ];
+  List backimage = [
+    'assets/images/yellow-black-back-removebg-preview.png',
+    'assets/images/black-back-removebg-preview.png',
+    'assets/images/blue_back-removebg-preview (1).png',
+    'assets/images/white-back-removebg-preview.png'
   ];
   late AnimationController _controller2;
   late AnimationController _controller;
@@ -47,7 +56,6 @@ class _CardHomePageState extends State<CardHomePage>
     _controller2.addListener(() {
       setState(() {
         if (_controller2.isCompleted) {
-          Navigator.of(context).push(Slidein(route: SecondClass()));
           Timer(Duration(milliseconds: 1000), () {
             _controller2.reset();
           });
@@ -154,6 +162,11 @@ class _CardHomePageState extends State<CardHomePage>
                   return GestureDetector(
                     onTap: () {
                       _controller2.forward();
+                      Navigator.of(context).push(Slidein(
+                          route: SecondClass(
+                        frontimage: frontImages[index],
+                        backimage: backimage[index],
+                      )));
                     },
                     child: Transform(
                       alignment: Alignment.center,
@@ -165,7 +178,7 @@ class _CardHomePageState extends State<CardHomePage>
                           height: 290,
                           child: Image.asset(
                             fit: BoxFit.contain,
-                            frontImages[index % 1],
+                            frontImages[index],
                           ),
                         ),
                       ),
