@@ -4,8 +4,7 @@ import 'dart:math';
 
 import 'package:date_format/date_format.dart';
 import 'package:dummy_app/animation/explicit/cardApp/secondScreen.dart';
-import 'package:dummy_app/animation/explicit/pageTransition.dart';
-
+import 'package:dummy_app/animation/explicit/cardApp/verticalflipwidget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -27,7 +26,7 @@ class _CardHomePageState extends State<CardHomePage>
   late AnimationController _controller;
   late Animation<int> _animation;
   late Animation<double> _rotateanimate;
-  double _currentAngle = 0.0;
+  late Animation<double> _scaleanimation;
   late Animation<double> _fading;
   bool tap = false;
 
@@ -47,15 +46,16 @@ class _CardHomePageState extends State<CardHomePage>
     _rotateanimate = Tween<double>(begin: 0, end: 1.6).animate(_controller2);
     _controller2.addListener(() {
       setState(() {
-        // if (_controller2.isCompleted) {
-        //   Navigator.of(context).push(Slidein(route: CardFetails()));
-        //   Timer(Duration(milliseconds: 1000), () {
-        //     _controller2.reset();
-        //   });
-        // }
+        if (_controller2.isCompleted) {
+          Navigator.of(context).push(Slidein(route: SecondClass()));
+          Timer(Duration(milliseconds: 1000), () {
+            _controller2.reset();
+          });
+        }
       });
     });
 
+    _scaleanimation = Tween<double>(begin: 1, end: 0.4).animate(_controller2);
     _controller.forward();
   }
 
@@ -67,8 +67,6 @@ class _CardHomePageState extends State<CardHomePage>
 
   @override
   Widget build(BuildContext context) {
-    double angle = _currentAngle % (2 * pi);
-
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -153,20 +151,22 @@ class _CardHomePageState extends State<CardHomePage>
                 physics: FixedExtentScrollPhysics(),
                 itemExtent: 290,
                 children: List.generate(4, (index) {
-                  return Hero(
-                    tag: 'taged',
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => CardFetails()));
-                        // _controller2.forward();
-                      },
-                      child: Container(
-                        width: 600,
-                        height: 290,
-                        child: Image.asset(
-                          fit: BoxFit.contain,
-                          frontImages[index % 1],
+                  return GestureDetector(
+                    onTap: () {
+                      _controller2.forward();
+                    },
+                    child: Transform(
+                      alignment: Alignment.center,
+                      transform: Matrix4.rotationZ(_rotateanimate.value),
+                      child: ScaleTransition(
+                        scale: _scaleanimation,
+                        child: Container(
+                          width: 600,
+                          height: 290,
+                          child: Image.asset(
+                            fit: BoxFit.contain,
+                            frontImages[index % 1],
+                          ),
                         ),
                       ),
                     ),
