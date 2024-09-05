@@ -25,6 +25,7 @@ import 'package:dummy_app/drawer2.dart';
 import 'package:dummy_app/dropdownmenu.dart';
 import 'package:dummy_app/filepicker.dart';
 import 'package:dummy_app/grid.dart';
+import 'package:dummy_app/http/home.dart';
 import 'package:dummy_app/someskelton/homepage.dart';
 import 'package:dummy_app/someskelton/instagram.dart';
 import 'package:dummy_app/listView.dart';
@@ -57,7 +58,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(),
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          body: CardHomePage(),
+          body: httpHomePage(),
         ));
   }
 }
