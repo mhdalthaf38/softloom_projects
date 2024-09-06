@@ -25,16 +25,42 @@ class _httpHomePageState extends State<httpHomePage> {
               if (SnapShot.hasData) {
                 return ListView(
                   children: SnapShot.data!
-                      .map((Dat) => Card(
-                            child: ListTile(
-                              title: Text(Dat.title),
-                              subtitle: Text(Dat.body),
+                      .map((Dat) => Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Card(
+                              color: const Color.fromARGB(255, 184, 219, 247),
+                              child: ListTile(
+                                minTileHeight: 200,
+                                title: Center(
+                                    child: Text(
+                                  Dat.title,
+                                  style: TextStyle(
+                                      color: Colors.green,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                )),
+                                subtitle: Text(Dat.body),
+                              ),
                             ),
                           ))
                       .toList(),
                 );
               } else {
-                return Text('there is no data');
+                return ListView.builder(
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        color: const Color.fromARGB(255, 207, 208, 209),
+                        child: ListTile(
+                          minTileHeight: 200,
+                          title: Center(child: Text('')),
+                          subtitle: Text(''),
+                        ),
+                      ),
+                    );
+                  },
+                );
               }
             }));
   }
